@@ -1,13 +1,17 @@
+const db = require("../../data/db-config");
+
 const getAll = () => {
-  // DO YOUR MAGIC
+  return db("foo-table");
 }
 
 const getById = id => {
-  // DO YOUR MAGIC
+  return db("foo-table")
+    .where("id", id)
+    .first()
 }
 
 const create = account => {
-  // DO YOUR MAGIC
+  
 }
 
 const updateById = (id, account) => {
