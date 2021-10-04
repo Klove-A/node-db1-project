@@ -18,7 +18,7 @@ router.get("/",
 
 router.get("/:id", 
   checkAccountId, 
-  async (req, res, next) => {
+  async (req, res) => {
   res.json(req.account)
 });
 
