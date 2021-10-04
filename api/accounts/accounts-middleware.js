@@ -1,11 +1,14 @@
 exports.checkAccountPayload = (req, res, next) => {
-  // DO YOUR MAGIC
+  console.log("checkAccountPa")
+  next()
 }
 
 exports.checkAccountNameUnique = (req, res, next) => {
-  // DO YOUR MAGIC
+  console.log("checkAccountNa")
+  next()
 }
 
 exports.checkAccountId = (req, res, next) => {
-  // DO YOUR MAGIC
+  console.log("checkAccountId")
+  next()
 }

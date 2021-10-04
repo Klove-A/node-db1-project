@@ -2,13 +2,13 @@ const db = require("../../data/db-config");
 
 const getAll = () => {
   return db("accounts");
-}
+};
 
 const getById = id => {
   return db("account")
     .where("id", id)
     .first()
-}
+};
 
 const create = account => {
   
