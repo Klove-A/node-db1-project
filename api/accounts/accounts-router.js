@@ -1,44 +1,43 @@
 const router = require('express').Router()
 
 router.get('/', (req, res, next) => {
-  res.json("/api/accounts")
   try {
-
+  
+    res.json("get accounts")
   }catch (err) {
-    next()
+    next(err)
   }
 })
 
 router.get('/:id', (req, res, next) => {
   try {
-
+    res.json("get account by id")
   }catch (err) {
-    next()
+    next(err)
   }
 })
 
 router.post('/', (req, res, next) => {
   try {
-
+    res.json("post account")
   }catch (err) {
-    next()
+    next(err)
   }
 })
 
 router.put('/:id', (req, res, next) => {
   try {
-
+    res.json("put account")
   } catch (err) {
-    next()
+    next(err)
   }
-}
-);
+})
 
 router.delete('/:id', (req, res, next) => {
   try {
-
+    res.json("delete account")
   }catch (err) {
-    next()
+    next(err)
   }
 })
 
