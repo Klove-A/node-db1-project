@@ -1,11 +1,11 @@
 const db = require("../../data/db-config");
 
 const getAll = () => {
-  return db("foo-table");
+  return db("accounts");
 }
 
 const getById = id => {
-  return db("foo-table")
+  return db("account")
     .where("id", id)
     .first()
 }
