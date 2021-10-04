@@ -1,14 +1,25 @@
+Account = require("./accounts-model");
+
 exports.checkAccountPayload = (req, res, next) => {
-  console.log("checkAccountPa")
-  next()
-}
+  console.log("checkAccountPa");
+  next();
+};
 
 exports.checkAccountNameUnique = (req, res, next) => {
-  console.log("checkAccountNa")
-  next()
-}
+  console.log("checkAccountNa");
+  next();
+};
 
-exports.checkAccountId = (req, res, next) => {
-  console.log("checkAccountId")
-  next()
-}
+exports.checkAccountId = async (req, res, next) => {
+  try {
+    const account = await Account.getById(req.params.id);
+    if (!account) {
+      next({ status: 404, message: "account not found" });
+    } else {
+      req.account = account;
+      next();
+    }
+  } catch (err) {
+    next(err);
+  }
+};
