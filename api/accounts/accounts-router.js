@@ -6,8 +6,7 @@ const {
   checkAccountPayload,
 } = require("./accounts-middleware");
 
-router.get("/", 
-  async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     const accounts = await Account.getAll();
     res.json(accounts);
@@ -16,25 +15,29 @@ router.get("/",
   }
 });
 
-router.get("/:id", 
-  checkAccountId, 
-  async (req, res) => {
-  res.json(req.account)
+router.get("/:id", checkAccountId, async (req, res) => {
+  res.json(req.account);
 });
 
-router.post("/",
-  checkAccountNameUnique,
+router.post(
+  "/",
   checkAccountPayload,
-  (req, res, next) => {
+  checkAccountNameUnique,
+  async (req, res, next) => {
     try {
-      res.json("post account");
+      const newAccount = await Account.create({
+        name: req.body.name.trim(),
+        budget: req.body.budget,
+      });
+      res.status(201).json(newAccount);
     } catch (err) {
       next(err);
     }
   }
 );
 
-router.put("/:id",
+router.put(
+  "/:id",
   checkAccountId,
   checkAccountNameUnique,
   checkAccountPayload,
@@ -47,9 +50,7 @@ router.put("/:id",
   }
 );
 
-router.delete("/:id", 
-  checkAccountId, 
-  (req, res, next) => {
+router.delete("/:id", checkAccountId, (req, res, next) => {
   try {
     res.json("delete account");
   } catch (err) {
