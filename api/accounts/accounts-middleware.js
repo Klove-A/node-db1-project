@@ -19,13 +19,12 @@ exports.checkAccountPayload = (req, res, next) => {
   } else {
     next();
   }
-}
+};
 
 exports.checkAccountNameUnique = async (req, res, next) => {
-  const { name } = req.body;
   try {
-    const accountName = await Account.getByName(name.trim());
-    if (accountName) {
+    const name = await Account.getByName(req.body.name.trim());
+    if (name) {
       res.status(400).json({
         message: "that name is taken",
       });
